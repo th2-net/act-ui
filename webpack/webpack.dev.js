@@ -36,13 +36,22 @@ module.exports = webpackMerge(commonConfig, {
         host: "0.0.0.0",
         historyApiFallback: true,
         hot: true,
-		proxy: {
-			'/backend': {
-				target: 'https://th2-qa.exp.exactpro.com:30443/th2-commonv3/act-ui/',
-				changeOrigin: true,
-				secure: false
-			}
-		},
+	
+            //   proxy: {
+            //     '/backend': {
+            //       target: 'http://localhost:8081',
+            //       pathRewrite: { '^/backend': '' },
+            //     },
+             // }, 
+
+             proxy: {
+                '/backend': {
+                  target: 'http://th2-qa:31464',
+                  pathRewrite: { '^/backend': '' },
+                  secure:false,
+                  changeOrigin:true,
+                },
+            },
     },
     module: {
         rules: [
